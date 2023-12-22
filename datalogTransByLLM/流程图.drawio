@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-12-22T07:59:06.348Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="CUieD9BJPX8TriTjfect" version="22.1.11" type="github">
+<mxfile host="app.diagrams.net" modified="2023-12-22T08:45:51.612Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="TuHSnds6PudEVNq2hE8k" version="22.1.11" type="github">
   <diagram name="第 1 页" id="qbcq0HSddqmyH18pInoi">
     <mxGraphModel dx="954" dy="606" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -89,7 +89,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="Vjg9qxUvn2heQVp0XPwC-32" value="尝试基于反馈信息修复语法问题" style="whiteSpace=wrap;html=1;verticalAlign=top;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+        <mxCell id="Vjg9qxUvn2heQVp0XPwC-32" value="LLM尝试基于反馈信息修复语法问题" style="whiteSpace=wrap;html=1;verticalAlign=top;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
           <mxGeometry x="678.75" y="285" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="Vjg9qxUvn2heQVp0XPwC-42" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Vjg9qxUvn2heQVp0XPwC-35" target="Vjg9qxUvn2heQVp0XPwC-37">
@@ -136,6 +136,18 @@
         </mxCell>
         <mxCell id="Vjg9qxUvn2heQVp0XPwC-52" value="转换后规则" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=#9673a6;fillColor=#e1d5e7;shape=mxgraph.azure.file_2;pointerEvents=1;" vertex="1" parent="1">
           <mxGeometry x="1430" y="210" width="47.5" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Vjg9qxUvn2heQVp0XPwC-57" value="可行性状况：&lt;br&gt;已经存在DDoop中soufflé规则转换器组件，稍作调整即可适应基础场景&lt;br&gt;潜在问题：&lt;br&gt;规则内若使用了组件内定义规则，从后期流程出发，声明部分将变得相对复杂。" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="90" y="400" width="207.5" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="Vjg9qxUvn2heQVp0XPwC-58" value="可行性状况：&lt;br&gt;已经走通流程，之前是一个小程序作为整体输入。" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="340" y="400" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Vjg9qxUvn2heQVp0XPwC-59" value="可行性状况：&lt;br&gt;现存的编译器均存在parser，我们需要的正是这个部分&lt;br&gt;潜在问题：&lt;br&gt;一部分编译器parser报错信息不足，可能需要手写parser获得更加详细的信息作为反馈。但这样的话，流程就没有那么可拓展了。&lt;br&gt;初步解决方案：&lt;br&gt;先尝试单规则条件下基于反馈的效果如何。" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="587.5" y="400" width="180" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="Vjg9qxUvn2heQVp0XPwC-60" value="可行性状况：&lt;br&gt;生成input需要parser提取必要的规则信息生成正确格式的输入，soufflé部分DDoop现有工具已经提供了基础设施，可以有效生成适合验证的规则，输入。&lt;br&gt;潜在问题：&lt;br&gt;1. ddlog验证输入可以通过soufflé转，但是潜在的规则转换（添加input output标记确实能力）&lt;br&gt;2. mutation部分的问题在于，现有的类似工具mutation是专注于寻找解释器漏洞的，生成的程序有效修复语义错误的可能性不高&lt;br&gt;3. 单独验证并不能保证找出错误&lt;br&gt;初步解决方案：&lt;br&gt;1. 尝试简单的通过文本匹配来实现&lt;br&gt;2. 对mutation部分的变换规则进行修改，尝试提高效率。&lt;br&gt;3. 对分拆规则进行验证是因为这样修复起来比较切实际，对整个datalog程序进行修复，问题定位都是很困难的" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="380" width="180" height="360" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
